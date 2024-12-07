@@ -13,7 +13,8 @@ FROM node:16 as server
 
 WORKDIR /usr/src/app
 
-COPY ./server/package*.json ./
+
+COPY server/package*.json ./  # Ensure this is correct
 RUN npm ci --omit=dev
 
 # Create the final image to host both, server and distribute files as public
