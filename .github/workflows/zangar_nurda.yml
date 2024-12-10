@@ -54,15 +54,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           registry: index.docker.io  # Docker Hub registry URL (default)
 
-      - name: Generate Docker Metadata
-        id: meta
-        uses: docker/metadata-action@v4
-        with:
-          images: ${{ secrets.DOCKER_USERNAME }}/nurda-dh-actions-workshop  # Replace with your Docker Hub repository name
-          tags: |
-            type=ref,event=tag
-            type=ref,event=pr
-            type=sha,event=branch,prefix=,suffix=,format=short
+    
 
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v2
